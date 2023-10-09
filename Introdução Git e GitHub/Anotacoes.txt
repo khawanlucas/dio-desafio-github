@@ -1,3 +1,125 @@
-Documentação do Git: https://git-scm.com/docs
+Comandos básicos do Git
 
-•Git é um sistema de controle de versões distribuido
+----Configuração----
+
+Níveis de projeto
+
+--global => configurações do usuário
+--system => configurações do sistema
+--local => configurações de repositório específico que vc se encontra
+
+
+Em relação ao nome e e-mail
+
+git config --global user.name "SEU NOME" = definir seu nome
+git config --global user.email "SEU E-MAIL" = definir seu e-mail
+git config user.name = retorna o nome
+git config user.email = retorna o e-mail
+
+
+Em relação à Branch padrão
+
+git config init.defaultBranch = Retorna o nome da Branch padrão
+git config --global init.defaultBranch NOME DA BRANCH = alterar o nome da Branch
+
+
+git config --list = retorna uma lista das configurações
+
+
+git config --global credential.helper cache = salva suas credenciais temporariamente na máquina
+git config --global credential.helper store = salva suas credenciais permanentemente na máquina
+git config --global credential.helper = retorna o tipo de credencial (cache ou store) que está configurado na máquina
+
+git config -- global --show-origin = mostra o caminho onde está armazenado determinado arquivo
+
+cat ARQUIVO = exibe o conteúdo de um determinado arquivo
+cat .git-credentials = retorna o TOKEN que foi utilizado
+
+cd = Change Directory; Troca de diretório 
+cd .. = volta uma casa
+
+----Chave SSH----
+
+Protocolo de rede que possibilita que sua máquina local e o servidor remoto se conectem de forma segura e criptografada por meio da internet.
+Existe uma chave pública e uma privada (equivalente a uma senha)
+
+cd ~/.ssh 
+ls                          = retorna as chaves pública e privada
+
+
+
+----Criar e clonar repositórios locais----
+
+
+git clone URL DO REPOSITÓRIO = clona o repositório do GitHub para a máquina local
+git clone URL DO REPOSITÓRIO NOME ESCOLHIDO = se quiser clonar com outro nome
+
+
+mkdir NOME DO DIRETÓRIO NOVO = cria um diretório
+
+git init = inicia um repositório git
+
+git remote -v = retorna os repositórios remotos vinculados
+
+git remote add origin* URL = vincular o repositório remoto
+*nome do repositório remoto (geralmente origin)
+
+git push = "empurra" as alterações do repositório local para o remoto
+git push -u origin NOME DA BRANCH = primeiro push 
+
+git status = mostra os status da área de trabalho e de preparação (index) e o estado dos arquivos
+
+touch NOME DO ARQUIVO = criar um arquivo vazio
+
+git add NOME DO ARQUIVO= adiciona o arquivo na área de preparação
+git add . = adiciona todos os arquivos para a área de preparação
+
+git commit -m"MENSAGEM" = grava as alterações do repositório com uma mensagem
+git commit --amend -m"NOVA MENSAGEM" = grava uma nova mensagem do último commit
+git commit --amend = abre o editor para alterar a mensagem
+
+git log = exibe o histórico de commits feitos
+
+echo PASTA/ > .gitignore = faz com que a pasta seja ignorada
+
+touch PASTA/.gitkeep = criação de arquivo gitkeep
+gitkeep: convenção para que o git reconheça o diretório vazio
+
+rm -rf .git = remove recursivamente e à força o diretório .git
+
+git restore ARQUIVO = restauta a última versão do arquivo
+
+git reset = reseta o commit selecionado
+git reset --soft HASH DO COMMIT = preserva todas as mudanças entre a última atualização e o commit selecionado e os adiciona à área de preparação
+git reset --mixed HASH DO COMMIT = preserva todas as mudanças entre a ultima atualização e o commit selecionado como arquivos desconhecidos
+git reset --hard HASH DO COMMIT = descarta permanentemente todas as mudanças feitas entre a última atualização e o commit selecionado
+
+git reset NOME DO ARQUIVO = retira o arquivo que está na área de preparação
+git restore --stage NOME DO ARQUIVO = mesma função
+
+
+----Branches----
+
+git checkout -b NOME DA NOVA BRANCH = além de criar uma nova branch, troca o ponteiro da branch atual para a branch criada
+
+git checkout main = passa o ponteiro para a branch principal
+
+git branch -v = retorna o último commit de cada branch
+
+git merge NOME DA BRANCH = mescla a branch principal com a branch citada
+
+git branch = lista as branches do diretório
+
+git branch -d NOME DA BRANCH = excluí a branch
+
+git fetch = baixar uma alteração do diretório remoto sem mesclar com o diretório local
+
+git diff NOME DA BRANCH NOME DE OUTRA BRANCH = ver a diferença entre uma branch e outra
+git diff main origin/main = diferença entre o main local e o main remoto
+
+git clone URL --branch NOME DA BRANCH --single-branch = clona apenas uma branch
+
+git stash = arquivar uma modificação sem que ela esteja pronta para commit ou para a criação de uma nova branch
+git stash list = lista de modificações arquivadas
+git stash pop = traz as modificações de volta, mas as retira do stash
+git stash apply = traz as modificações de volta e as mantêm no stash

@@ -32,6 +32,7 @@ Existem dois tipos de Sistemas de controle de versão:
 |Plataforma|Documentação|
 |------------|------------|
 |Git|[Link](https://git-scm.com/docs)|
+|------------|-----------|
 |GitHub|[Link](https://docs.github.com/en/get-started)|
 
 # 🔍Referências e Fontes
